@@ -33,7 +33,3 @@ struct CharacterRowView: View {
         }
     }
 }
-
-#Preview {
-    CharacterRowView()
-}

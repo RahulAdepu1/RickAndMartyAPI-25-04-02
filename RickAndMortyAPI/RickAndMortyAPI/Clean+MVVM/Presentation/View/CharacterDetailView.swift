@@ -41,7 +41,3 @@ struct CharacterDetailView: View {
         .navigationTitle(character.name ?? "")
     }
 }
-
-#Preview {
-    CharacterDetailView()
-}

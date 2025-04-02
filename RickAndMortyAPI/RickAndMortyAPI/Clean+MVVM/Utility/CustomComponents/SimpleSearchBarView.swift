@@ -18,7 +18,3 @@ struct SimpleSearchBarView: View {
             .padding()
     }
 }
-
-#Preview {
-    SimpleSearchBarView()
-}
