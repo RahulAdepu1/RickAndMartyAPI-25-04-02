@@ -74,6 +74,34 @@ struct Characters: Identifiable, Codable {
         self.url = try? container.decodeIfPresent(String.self, forKey: .url)
         self.created = try? container.decodeIfPresent(String.self, forKey: .created)
     }
+    
+    init(
+        id: Int?,
+        name: String?,
+        status: Status?,
+        species: Species?,
+        type: String?,
+        gender: Gender?,
+        origin: Location?,
+        location: Location?,
+        image: String?,
+        episode: [String]?,
+        url: String?,
+        created: String?
+    ) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
 }
 
 // MARK: - Location

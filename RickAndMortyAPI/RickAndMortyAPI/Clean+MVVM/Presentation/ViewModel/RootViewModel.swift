@@ -38,6 +38,7 @@ extension RootViewModel {
             .store(in: &cancellables)
     }
     
+    @MainActor
     func fetchCharacters(searchText: String) async {
         updateState(newState: .loading)
         
@@ -61,6 +62,7 @@ extension RootViewModel {
         case error
     }
     
+    @MainActor
     private func updateState(newState: RootViewState) {
         self.viewState = newState
     }
