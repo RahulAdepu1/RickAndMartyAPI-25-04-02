@@ -15,6 +15,7 @@ struct RootView: View {
             VStack {
                 // Search Bar
                 SimpleSearchBarView(text: $viewModel.searchText)
+                    .accessibilityLabel("Search for Rick and Morty characters")
                 
                 // View States
                 if viewModel.viewState == .idle || viewModel.viewState == .loading {
@@ -26,6 +27,7 @@ struct RootView: View {
                 }
             }
             .navigationTitle("Rick & Morty")
+            .accessibilityAddTraits(.isHeader)
         }
     }
 }
@@ -44,8 +46,12 @@ extension RootView {
     func errorView() -> some View {
         ZStack {
             Text("Congratulations you found an ERROR")
+                .accessibilityLabel("Congratulations you found an ERROR")
             Text("Try again please!")
+                .accessibilityHint("Try again please!")
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("ErrorMessage")
         .padding(.bottom, 100)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -58,15 +64,23 @@ extension RootView {
                 NavigationLink(destination: CharacterDetailView(character: character)) {
                     CharacterRowView(character: character)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("\(character.name ?? "Unknown character")")
+                .accessibilityAddTraits(.isButton)
             }
             .listStyle(PlainListStyle())
+            .accessibilityIdentifier("CharacterList")
         }
         // If the list is Empty
         else {
             VStack {
                 Text("No Results")
+                    .accessibilityLabel("No results found")
                 Text("Try another search!")
+                    .accessibilityHint("Try another search!")
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("EmptyResultView")
             .padding(.bottom, 100)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
